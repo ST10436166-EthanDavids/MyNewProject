@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+Screens Explanation
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+HomeScreen
+Displays a list of menu items.
+Allows users to navigate to Add Menu to add new dishes.
+Allows users to navigate to Filter Menu for future filtering functionality.
+Uses FlatList to display menu items and buttons for navigation.
 
-## Get started
+AddMenuScreen
+Allows users to input details about a new dish (name, description, course, and price).
+On submission, navigates back to the HomeScreen and adds the new dish to the menu.
+Uses TextInput for input fields and Picker for course selection.
 
-1. Install dependencies
+FilterMenuScreen
+Placeholder for a future filtering system where users can apply filters to the menu.
+Currently, this screen does not have any functional filtering implemented.
 
-   ```bash
-   npm install
-   ```
+Customization
+You can customize the styles for each screen by modifying the StyleSheet in the respective screen files. Adjust colors, fonts, and layout to fit your design.
+For adding more functionality to the FilterMenuScreen, you can implement filter logic based on courses, price range, or other criteria 
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+How to start The Application
+1.Open Up an integrated Terminal
+2.type in the words : npx expo start
+3.wait for the batcode to appear
+4.press 'a' to start up the android 
+5.Use the Application
