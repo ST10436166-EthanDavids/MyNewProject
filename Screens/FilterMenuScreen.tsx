@@ -1,42 +1,38 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { FilterMenuScreenProps } from '../types'; // Correct path to types.ts
 
 const FilterMenuScreen: React.FC<FilterMenuScreenProps> = ({ menuItems, navigation }) => {
   const [selectedCourse, setSelectedCourse] = useState<'Starters' | 'Main Course' | 'Desserts' | 'All'>('All');
 
+  // Filter menu items based on selected course
   const filteredItems = selectedCourse === 'All' ? menuItems : menuItems.filter(item => item.course === selectedCourse);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.header}>Filter Menu by Course</Text>
 
       {/* Course Filter Buttons */}
       <View style={styles.filterButtons}>
-        <TouchableOpacity
-          style={styles.filterButton}
-          onPress={() => setSelectedCourse('All')}
-        >
-          <Text style={styles.filterButtonText}>Show All</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.filterButton}
-          onPress={() => setSelectedCourse('Starters')}
-        >
-          <Text style={styles.filterButtonText}>Starters</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.filterButton}
-          onPress={() => setSelectedCourse('Main Course')}
-        >
-          <Text style={styles.filterButtonText}>Main Course</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.filterButton}
-          onPress={() => setSelectedCourse('Desserts')}
-        >
-          <Text style={styles.filterButtonText}>Desserts</Text>
-        </TouchableOpacity>
+        {['All', 'Starters', 'Main Course', 'Desserts'].map((course) => (
+          <TouchableOpacity
+            key={course}
+            style={[
+              styles.filterButton,
+              selectedCourse === course && styles.activeFilterButton, // Highlight selected button
+            ]}
+            onPress={() => setSelectedCourse(course as typeof selectedCourse)}
+          >
+            <Text
+              style={[
+                styles.filterButtonText,
+                selectedCourse === course && styles.activeFilterButtonText, // Highlight selected text
+              ]}
+            >
+              {course}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
       {/* Filtered Menu Items */}
@@ -54,89 +50,102 @@ const FilterMenuScreen: React.FC<FilterMenuScreenProps> = ({ menuItems, navigati
       {/* Navigation Buttons */}
       <View style={styles.navigationButtons}>
         <TouchableOpacity
-          style={styles.smallNavButton}
+          style={styles.navButton}
           onPress={() => navigation.navigate('AddMenu')}
         >
-          <Text style={styles.smallNavButtonText}>Add Menu Item</Text>
+          <Text style={styles.navButtonText}>Add Menu Item</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.smallNavButton}
+          style={styles.navButton}
           onPress={() => navigation.navigate('Home')}
         >
-          <Text style={styles.smallNavButtonText}>Home Screen</Text>
+          <Text style={styles.navButtonText}>Home Screen</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#f9f9f9',
+    padding: 10, // Reduced padding for better screen fit
+    backgroundColor: '#f0f8ff', // Light blue background for better aesthetics
   },
   header: {
-    fontSize: 24,
+    fontSize: 20, // Reduced font size for header
     fontWeight: 'bold',
-    color: '#4e6d6a',
-    marginBottom: 20,
+    color: '#2c3e50', // Deep blue for header text
+    marginBottom: 15,
     textAlign: 'center',
   },
   filterButtons: {
-    marginVertical: 20,
+    marginVertical: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
   filterButton: {
-    backgroundColor: '#4e6d6a',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 20,
+    backgroundColor: '#2980b9', // Default primary color for filter buttons
+    paddingVertical: 6, // Reduced padding for filter buttons
+    paddingHorizontal: 12, // Reduced padding for filter buttons
+    borderRadius: 20, // Slightly smaller radius
     marginVertical: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  activeFilterButton: {
+    backgroundColor: '#27ae60', // Secondary color to highlight the active button
   },
   filterButtonText: {
-    color: '#fff',
-    fontSize: 14,
+    color: '#ecf0f1', // Light text for contrast
+    fontSize: 14, // Smaller font size for buttons
     fontWeight: 'bold',
   },
+  activeFilterButtonText: {
+    color: '#fff', // Bright white text for active button
+  },
   item: {
-    padding: 15,
-    backgroundColor: '#fff',
-    marginVertical: 5,
+    padding: 10, // Reduced padding to make items fit better
+    backgroundColor: '#ffffff', // Pure white for clean contrast
+    marginVertical: 6, // Reduced margin for item spacing
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    borderLeftWidth: 5,
+    borderLeftColor: '#3498db', // Accent color to indicate items visually
   },
   text: {
-    fontSize: 16,
-    color: '#555',
+    fontSize: 16, // Smaller text size for item names
+    color: '#34495e', // Slightly darker text for readability
+    fontWeight: 'bold',
   },
   description: {
-    fontSize: 14,
-    color: '#777',
-    marginTop: 5,
+    fontSize: 12, // Smaller font size for descriptions
+    color: '#7f8c8d', // Muted color for descriptions
+    marginTop: 4,
   },
   navigationButtons: {
-    marginTop: 30,
+    marginTop: 20,
     alignItems: 'center',
   },
-  smallNavButton: {
-    backgroundColor: '#4e6d6a',
-    paddingVertical: 10,
-    paddingHorizontal: 25,
-    marginVertical: 8,
-    borderRadius: 20,
-    width: '80%',
+  navButton: {
+    backgroundColor: '#8e44ad', // Secondary purple for navigation buttons
+    paddingVertical: 10, // Reduced padding
+    paddingHorizontal: 25, // Reduced padding
+    marginVertical: 6, // Reduced margin between buttons
+    borderRadius: 25,
+    width: '85%',
     alignItems: 'center',
   },
-  smallNavButtonText: {
-    color: '#fff',
-    fontSize: 16,
+  navButtonText: {
+    color: '#ffffff',
+    fontSize: 14, // Smaller text size for buttons
     fontWeight: 'bold',
   },
 });

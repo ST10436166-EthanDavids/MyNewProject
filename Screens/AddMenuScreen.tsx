@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, FlatList, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker'; // Import Picker
 import { AddMenuScreenProps } from '../types';
 
@@ -28,8 +28,11 @@ const AddMenuScreen: React.FC<AddMenuScreenProps> = ({ menuItems, setMenuItems, 
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Add Menu Item</Text>
+    <ScrollView style={styles.container}>
+      {/* Gradient Header */}
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Add Menu Item</Text>
+      </View>
 
       {/* Input Fields */}
       <TextInput
@@ -65,8 +68,8 @@ const AddMenuScreen: React.FC<AddMenuScreenProps> = ({ menuItems, setMenuItems, 
       </Picker>
 
       {/* Add Item Button */}
-      <TouchableOpacity style={styles.smallButton} onPress={addMenuItem}>
-        <Text style={styles.smallButtonText}>Add Item</Text>
+      <TouchableOpacity style={styles.addButton} onPress={addMenuItem}>
+        <Text style={styles.addButtonText}>Add Item</Text>
       </TouchableOpacity>
 
       {/* Menu Items List */}
@@ -89,102 +92,122 @@ const AddMenuScreen: React.FC<AddMenuScreenProps> = ({ menuItems, setMenuItems, 
       {/* Navigation Buttons */}
       <View style={styles.navigationButtons}>
         <TouchableOpacity
-          style={styles.smallNavButton}
+          style={styles.navButton}
           onPress={() => navigation.navigate('Home')}
         >
-          <Text style={styles.smallNavButtonText}>Home Screen</Text>
+          <Text style={styles.navButtonText}>Home Screen</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.smallNavButton}
+          style={styles.navButton}
           onPress={() => navigation.navigate('FilterMenu')}
         >
-          <Text style={styles.smallNavButtonText}>Filter Menu</Text>
+          <Text style={styles.navButtonText}>Filter Menu</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#f9f9f9',
+    padding: 15, // Reduced padding for a more compact layout
+    backgroundColor: '#F0F4F8', // Light gray-blue background
   },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#4e6d6a',
+
+  // Header
+  headerContainer: {
+    backgroundColor: '#00BCD4', // Cyan gradient for header
+    paddingVertical: 15, // Reduced vertical padding
     marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 15,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-  },
-  label: {
-    fontSize: 16,
-    color: '#4e6d6a',
-    marginVertical: 10,
-  },
-  picker: {
-    height: 50,
-    width: '100%',
-    marginBottom: 20,
-  },
-  smallButton: {
-    backgroundColor: '#4e6d6a',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 20,
-    marginBottom: 15,
+    borderRadius: 10,
     alignItems: 'center',
   },
-  smallButtonText: {
-    color: '#fff',
+  headerText: {
+    fontSize: 24, // Reduced font size for header text
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+
+  // Input Styles
+  input: {
+    height: 45, // Reduced height for input fields
+    borderColor: '#B0BEC5', // Light gray for input borders
+    borderWidth: 1,
+    marginBottom: 12, // Reduced margin bottom for compactness
+    paddingHorizontal: 12, // Adjusted padding for smaller fields
+    borderRadius: 8,
+    backgroundColor: '#FFFFFF',
+  },
+
+  label: {
     fontSize: 16,
+    color: '#37474F', // Dark gray-blue for labels
+    marginVertical: 8, // Reduced margin for labels
+  },
+  picker: {
+    height: 45, // Adjusted height for picker
+    marginBottom: 20, // Maintained space below picker
+    backgroundColor: '#E1F5FE', // Light cyan for picker background
+    borderRadius: 8,
+  },
+
+  // Buttons
+  addButton: {
+    backgroundColor: '#00897B', // Teal for primary button
+    paddingVertical: 12, // Reduced padding for buttons
+    paddingHorizontal: 25, // Adjusted horizontal padding
+    borderRadius: 30,
+    alignItems: 'center',
+    marginVertical: 12, // Added margin for spacing
+  },
+  addButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16, // Adjusted font size for button text
     fontWeight: 'bold',
   },
+
+  // List Items
   item: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 15,
-    backgroundColor: '#fff',
-    marginVertical: 5,
+    padding: 12, // Reduced padding for list items
+    backgroundColor: '#FFFFFF',
+    marginVertical: 6, // Reduced margin between items
     borderRadius: 8,
+    borderColor: '#CFD8DC', // Light border color
+    borderWidth: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 5,
+    shadowRadius: 4,
   },
   itemText: {
-    fontSize: 16,
-    color: '#555',
+    fontSize: 14, // Smaller font size for list items
+    color: '#37474F',
   },
   removeButton: {
-    backgroundColor: '#ff4d4d',
+    backgroundColor: '#FF5252', // Bright red for remove actions
     paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   removeButtonText: {
-    color: '#fff',
-    fontSize: 14,
+    color: '#FFFFFF',
+    fontSize: 12, // Smaller text size for remove button
     fontWeight: 'bold',
   },
+
+  // Navigation Buttons
   navigationButtons: {
-    marginTop: 20,
+    marginTop: 30,
     alignItems: 'center',
   },
-  smallNavButton: {
-    backgroundColor: '#4e6d6a',
+  navButton: {
+    backgroundColor: '#00ACC1', // Bright cyan for nav buttons
     paddingVertical: 10,
     paddingHorizontal: 25,
     marginVertical: 8,
@@ -192,9 +215,9 @@ const styles = StyleSheet.create({
     width: '80%',
     alignItems: 'center',
   },
-  smallNavButtonText: {
-    color: '#fff',
-    fontSize: 16,
+  navButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16, // Adjusted font size for nav button text
     fontWeight: 'bold',
   },
 });

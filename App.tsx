@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './Screens/homescreen';
+import HomeScreen from './homescreen';
 import AddMenuScreen from './Screens/AddMenuScreen';
 import FilterMenuScreen from './Screens/FilterMenuScreen';
-import { MenuItem } from './types';  // Import the MenuItem type
+import { MenuItem } from '../types';  // Import the MenuItem type
 
 // Define the types for navigation
 type RootStackParamList = {
