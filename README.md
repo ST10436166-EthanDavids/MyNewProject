@@ -1,27 +1,55 @@
-Screens Explanation
+Christoffels Menu
+
+#What Is This App?
+This Menu App helps you manage a menu. You can add new dishes, see a list of all the dishes, and remove dishes if you no longer want them. The app also has buttons to move between different screens like the HomeScreen, AddMenuScreen, and FilterMenuScreen. The FilterMenuScreen is now working and helps you filter the menu based on categories like Starters, Main Course, and Desserts.
+
+#What Each Screen Does
 
 HomeScreen
-Displays a list of menu items.
-Allows users to navigate to Add Menu to add new dishes.
-Allows users to navigate to Filter Menu for future filtering functionality.
-Uses FlatList to display menu items and buttons for navigation.
+Shows a list of all the dishes on the menu.
+You can see the name and price of each dish.
+There are buttons to go to the AddMenuScreen (to add a new dish) and the FilterMenuScreen (to filter the menu).
 
 AddMenuScreen
-Allows users to input details about a new dish (name, description, course, and price).
-On submission, navigates back to the HomeScreen and adds the new dish to the menu.
-Uses TextInput for input fields and Picker for course selection.
+Lets you add new dishes to the menu by typing in the name, description, price, and course (e.g., Starters, Main Course, Desserts).
+When you add a dish, it shows up in the HomeScreen.
+You can also remove a dish from the list by clicking the Remove button next to the dish.
 
 FilterMenuScreen
-Placeholder for a future filtering system where users can apply filters to the menu.
-Currently, this screen does not have any functional filtering implemented.
+This screen now lets you filter the menu by course. For example, you can see only Starters, Main Course, or Desserts.
+Once you pick a course, the menu will only show dishes in that category.
+There's also a Clear Filter button to remove the filter and see all the dishes again.
 
-Customization
-You can customize the styles for each screen by modifying the StyleSheet in the respective screen files. Adjust colors, fonts, and layout to fit your design.
-For adding more functionality to the FilterMenuScreen, you can implement filter logic based on courses, price range, or other criteria 
+#Key Features and Changes
+Add a Dish:
 
-How to start The Application
-1.Open Up an integrated Terminal
-2.type in the words : npx expo start
-3.wait for the batcode to appear
-4.press 'a' to start up the android 
-5.Use the Application
+You can enter a name, description, price, and course for each dish.
+After you add the dish, it will show up in the list on the HomeScreen.
+Remove a Dish:
+
+You can remove a dish from the list by clicking the Remove button next to it.
+Filter Menu:
+
+The FilterMenuScreen lets you filter dishes by their course. For example, if you only want to see Starters, you can choose that option and the list will update to show only Starters.
+The Clear Filter button lets you reset the filter and see all the dishes again.
+
+#Navigation:
+
+HomeScreen: From here, you can go to the AddMenuScreen to add new dishes or the FilterMenuScreen to filter the menu.
+AddMenuScreen: Add new dishes and then go back to the HomeScreen.
+FilterMenuScreen: Filter dishes by their course and reset the filter to see all dishes.
+
+#How to Run the Application
+
+1.unzip the file 
+2.open up the code
+3.Go to App.tsx and right click and open up an intergrated terminal
+4.type in the integrated terminal , "npx expo start"
+5.wait for the app to start running
+6.press "a" on keyboard to open up emulator
+7. wait till it opens, and use the Application as you please
+
+
+
+#Conclusion
+This app helps you manage a menu by adding new dishes, removing dishes, and filtering the list of dishes by their course (like Starters, Main Course, or Desserts). The AddMenuScreen lets you add dishes, and the Remove button lets you delete them from the list. The FilterMenuScreen helps you quickly find dishes by category. The app is easy to use with buttons and simple design.
