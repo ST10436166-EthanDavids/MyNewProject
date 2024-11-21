@@ -15,12 +15,12 @@ Lets you add new dishes to the menu by typing in the name, description, price, a
 When you add a dish, it shows up in the HomeScreen.
 You can also remove a dish from the list by clicking the Remove button next to the dish.
 
-FilterMenuScreen
+FilterMenuScreen (Changes made from part 2)
 This screen now lets you filter the menu by course. For example, you can see only Starters, Main Course, or Desserts.
 Once you pick a course, the menu will only show dishes in that category.
 There's also a Clear Filter button to remove the filter and see all the dishes again.
 
-#Key Features and Changes
+#Key Features and Changes ( From Part 2 )
 Add a Dish:
 
 You can enter a name, description, price, and course for each dish.
@@ -53,3 +53,5 @@ FilterMenuScreen: Filter dishes by their course and reset the filter to see all 
 
 #Conclusion
 This app helps you manage a menu by adding new dishes, removing dishes, and filtering the list of dishes by their course (like Starters, Main Course, or Desserts). The AddMenuScreen lets you add dishes, and the Remove button lets you delete them from the list. The FilterMenuScreen helps you quickly find dishes by category. The app is easy to use with buttons and simple design.
+
+link to see the video : https://youtu.be/bs7xIaNxoR0
